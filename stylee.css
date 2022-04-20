@@ -1,0 +1,47 @@
+header{
+	background-color: rgb(94, 92, 91);
+	padding: 10px;
+	margin: -8px;
+
+}
+header h3{
+	font-weight: 100;
+}
+header span{
+	margin-left: 78%;
+}
+header span a{
+	color: black;
+}
+body{
+	background-color: rgb(194, 194, 181);
+}
+table{
+	margin-top: 50px;
+	text-align: center;
+	
+	background: rgb(140, 147, 153);
+	color: rgb(0, 0, 0);
+	
+}
+table th{
+	font-weight: 100;
+}
+
+#show th, #show td{
+	padding: 8px;
+}
+
+#btna td input{
+	width: 100%;
+}
+
+#btna2 input{
+	width: 100%;
+}
+
+#btna3 input{
+	width: 100%;
+}
+
+

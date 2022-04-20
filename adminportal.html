@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Portal</title>
+	<link rel="stylesheet" href="stylee.css">
+</head>
+<header>
+	<h3>Admin Portal <span><a href="https://pointcapital.co.ke"> Point Capital (K) Ltd </a></span> </h3>
+	
+</header>
+<br>
+<body>
+
+	<center>
+		<h2>Available Funding Opportunities Page Update</h2>
+		<table border="4" id="table">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<td><input type="number" name="no" id="no"></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Sector</th>
+					<td><input type="text" name="sector" id="sector"></td>
+				</tr>
+				<tr>
+					<th>Investment Search Criteria</th>
+					<td><input type="text" name="iscriteria" id="iscriteria"></td>
+				</tr>
+				<tr>
+					<th>Available Funding Option</th>
+					<td><input type="text" name="afoption" id="afoption"></td>
+				</tr>
+				<tr>
+					<th>Investment Ticket Size</th>
+					<td><input type="text" name="itsize" id="itsize"></td>
+				</tr>
+				<tr>
+					<th>Investment Tenor</th>
+					<td><input type="text" name="itenor" id="itenor"></td>
+				</tr>
+				<tr>
+					<th>Applicable Regions</th>
+					<td><input type="text" name="aregions" id="aregions"></td>
+				</tr>
+				<tr id="btna">
+					<td colspan="2"><input type="button" name="button" id="btn" value="Add" onclick="AddRow()"></td>
+				</tr>
+				<tr id="btna2">
+					<td colspan="2"><input type="button" name="button2" id="btn2" value="Edit" onclick="editHtmlTbleSelectedRow();"></td>
+				</tr>
+				<tr id="btna3">
+					<td colspan="2"><input type="button" name="button3" id="btn3" value="Remove" onclick="removeSelectedRow();"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table border="4" id="show" name="show">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Sector</th>
+					<th>Investment Search Criteria</th>
+					<th>Available Funding Option</th>
+					<th>Investment Ticket Size</th>
+					<th>Investment Tenor</th>
+					<th>Applicable Regions</th>
+				</tr>
+			</thead>
+		</table>
+	</center>
+	
+	<script>
+		var rIndex,
+		table = document.getElementsByName("show");
+		
+				function checkEmptyInput() {
+                var isEmpty = false;
+                var no = document.getElementById("no").value;
+                var sector = document.getElementById("sector").value;
+                var iscriteria = document.getElementById("isrieria").value;
+				var afoption = document.getElementById("afoption").value;
+				var itsize = document.getElementById("itsize").value;
+				var itenor = document.getElementById("itenor").value;
+				var aregions = document.getElementById("aregions").value;
+            
+                if(no === ""){
+                    alert("No. Connot Be Empty");
+                    isEmpty = true;
+                }
+                else if(sector === ""){
+                    alert("Sector Connot Be Empty");
+                    isEmpty = true;
+                }
+                else if(iscriteria === ""){
+                    alert("Investment Search Criteria Connot Be Empty");
+                    isEmpty = true;
+                }
+				else if(afoption === ""){
+                    alert("Funding Option Connot Be Empty");
+                    isEmpty = true;
+                }
+				else if(itsize === ""){
+                    alert("Investment Ticket Size Connot Be Empty");
+                    isEmpty = true;
+                }
+				else if(itenor === ""){
+                    alert("Investment Tenor Connot Be Empty");
+                    isEmpty = true;
+                }
+				else if(aregions === ""){
+                    alert("Applicable Regions Connot Be Empty");
+                    isEmpty = true;
+                }
+                return isEmpty;
+
+				}
+		
+
+		var list1 = [];
+		var list2 = [];
+		var list3 = [];
+		var list4 = [];
+		var list5 = [];
+		var list6 = [];
+		var list7 = [];
+
+		var n = 1;
+		var x = 0;
+
+		function AddRow(){
+
+			var AddRown = document.getElementById('show');
+			var NewRow = AddRown.insertRow(n);
+
+
+			list1[x] = document.getElementById("no").value;
+			list2[x] = document.getElementById("sector").value;
+			list3[x] = document.getElementById("iscriteria").value;
+			list4[x] = document.getElementById("afoption").value;
+			list5[x] = document.getElementById("itsize").value;
+			list6[x] = document.getElementById("itenor").value;
+			list7[x] = document.getElementById("aregions").value;
+
+			var cel1 = NewRow.insertCell(0);
+			var cel2 = NewRow.insertCell(1);
+			var cel3 = NewRow.insertCell(2);
+			var cel4 = NewRow.insertCell(3);
+			var cel5 = NewRow.insertCell(4);
+			var cel6 = NewRow.insertCell(5);
+			var cel7 = NewRow.insertCell(6);
+
+			cel1.innerHTML = list1[x];
+			cel2.innerHTML = list2[x];
+			cel3.innerHTML = list3[x];
+			cel4.innerHTML = list4[x];
+			cel5.innerHTML = list5[x];
+			cel6.innerHTML = list6[x];
+			cel7.innerHTML = list7[x];
+
+			n++;
+			x++;
+
+			selectedRowToInput();
+
+		}
+
+		// display selected row data into input text
+		function selectedRowToInput(){
+
+			for(var i = 1; i < table.rows.length; i++)
+			{
+				table.rows[i].onclick = function()
+				{
+					// get the seected row index
+					rIndex = this.rowIndex;
+					document.getElementById("no").value = this.cells[0].innerHTML;
+					document.getElementById("sector").value = this.cells[1].innerHTML;
+					document.getElementById("iscriteria").value = this.cells[2].innerHTML;
+					document.getElementById("afoption").value = this.cells[3].innerHTML;
+					document.getElementById("itsize").value = this.cells[4].innerHTML;
+					document.getElementById("itenor").value = this.cells[5].innerHTML;
+					document.getElementById("aregions").value = this.cells[6].innerHTML;
+                    };
+                }
+            }
+
+			selectedRowToInput();
+
+			function editHtmlTbleSelectedRow()
+            {
+                var no = document.getElementById("no").value;
+                var sector = document.getElementById("sector").value;
+                var iscriteria = document.getElementById("isrieria").value;
+				var	afoption = document.getElementById("afoption").value;
+				var	itsize = document.getElementById("itsize").value;
+				var	itenor = document.getElementById("itenor").value;
+				var	aregions = document.getElementById("aregions").value;
+
+               if(!checkEmptyInput()){
+                table.rows[rIndex].cells[0].innerHTML = no;
+				table.rows[rIndex].cells[1].innerHTML = sector;
+                table.rows[rIndex].cells[2].innerHTML = iscriteria;
+                table.rows[rIndex].cells[3].innerHTML = afoption;
+				table.rows[rIndex].cells[4].innerHTML = itsize;
+				table.rows[rIndex].cells[5].innerHTML = itenor;
+				table.rows[rIndex].cells[6].innerHTML = aregions;
+				
+              }
+            }
+            
+            function removeSelectedRow()
+            {
+                table.deleteRow(rIndex);
+                // clear input text
+				document.getElementById("no").value = "";
+				sector = document.getElementById("sector").value = "";
+				iscriteria = document.getElementById("isrieria").value = "";
+				afoption = document.getElementById("afoption").value = "";
+				itsize = document.getElementById("itsize").value = "";
+				itenor = document.getElementById("itenor").value = "";
+				aregions = document.getElementById("aregions").value = "";
+		}
+
+
+	</script>
+</body>
+</html>
